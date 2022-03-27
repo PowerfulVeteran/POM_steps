@@ -31,7 +31,7 @@ public class LoginPageTest extends BaseTest {
 	
 	@Test(priority=4)
 	public void loginPageLoginTest () {
-		loginpage.doLogin("naveenanimation20@gmail.com", "Selenium12345");
+		loginpage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim());
 	}
 	
 }

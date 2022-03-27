@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
@@ -18,7 +17,8 @@ public class DriverFactory {
 	Properties prop;
 	public static String highlight = "false";
 	
-	public WebDriver inti_driver (String browserName) {
+	public WebDriver inti_driver (Properties prop) {
+		String browserName = prop.getProperty("browser").trim();
 		System.out.println("Running on Browser:" +browserName);
 		
 		if (browserName.equals("chrome")) {
@@ -39,7 +39,7 @@ public class DriverFactory {
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.get("https://demo.opencart.com/index.php?route=account/login");
+		driver.get(prop.getProperty("url").trim());
 		
 		return driver;
 	}

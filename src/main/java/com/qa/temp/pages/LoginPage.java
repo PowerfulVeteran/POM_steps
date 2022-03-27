@@ -3,10 +3,12 @@ package com.qa.temp.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+import com.qa.temp.utils.Constants;
+import com.qa.temp.utils.ElementUtil;
 
+public class LoginPage {
 	private WebDriver driver;
-	
+	private ElementUtil elementUtil;
 	//By Locators:
 	
 	private By username = By.cssSelector("input#input-email");
@@ -18,27 +20,30 @@ public class LoginPage {
 	//Constructors:
 	public LoginPage (WebDriver driver) {
 		this.driver = driver;
+		elementUtil = new ElementUtil(driver);
+		
 	}
 	
 	
 	//Page Action Methods:
 	
 	public String getLoginPageUrl() {
-		return driver.getCurrentUrl();
+		return elementUtil.getPageUrl();
 	}
 	
 	public String getLoginPageTitle() {
-		return driver.getTitle();
+		return elementUtil.waitForTitle(5, Constants.TITLE_SERACH_TEXT);
 	}
 	
 	public Boolean isForgotPasswordLinkAvailable () {
-		return driver.findElement(forgotPwdLink).isDisplayed();
+		return elementUtil.getElement(forgotPwdLink).isDisplayed();
 	}
 	
-	public void doLogin  (String un, String pwd) {
-		driver.findElement(username).sendKeys(un);
-		driver.findElement(password).sendKeys(pwd);
-		driver.findElement(loginButton).click();
+	public AccountsPage doLogin  (String un, String pwd) {
+		elementUtil.getElement(username).sendKeys(un);
+		elementUtil.getElement(password).sendKeys(pwd);
+		elementUtil.getElement(loginButton).click();
+		return new AccountsPage(driver);
 	}
 }
 
