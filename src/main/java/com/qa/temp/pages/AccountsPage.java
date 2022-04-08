@@ -50,5 +50,13 @@ public class AccountsPage {
 		Collections.sort(secsList);
 		return secsList;
 	}
+	
+	// search Method:
+		public SearchResultPage doSearch(String productName) {
+			System.out.println("Searching " + productName + "...");
+			elementUtil.doActionsSendKeys(serchfield, productName);
+			elementUtil.doActionsClick(searchButton);
+			return new SearchResultPage(driver);
+		}
 
 }
