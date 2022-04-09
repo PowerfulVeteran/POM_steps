@@ -15,24 +15,27 @@ public class DriverFactory {
 
 	WebDriver driver;
 	Properties prop;
+	private OptionsManager optionsManager;
 	public static String highlight = "false";
 	
 	public WebDriver inti_driver (Properties prop) {
+		highlight = prop.getProperty("highlight");
+		optionsManager = new OptionsManager(prop);
 		String browserName = prop.getProperty("browser").trim();
 		System.out.println("Running on Browser:" +browserName);
 		
 		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(optionsManager.getChromeOptions());
 		}
 		else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
+			driver = new EdgeDriver(optionsManager.getEdgeOptions());
 		}
 		else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-		}
+			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+		}	
 		else {
 			System.out.println("Browser not found");
 		}
