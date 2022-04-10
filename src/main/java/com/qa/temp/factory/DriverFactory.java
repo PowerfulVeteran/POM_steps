@@ -18,34 +18,47 @@ public class DriverFactory {
 	private OptionsManager optionsManager;
 	public static String highlight = "false";
 	
+	public static ThreadLocal <WebDriver> threadLocalDriver = new ThreadLocal<>();
+	
 	public WebDriver inti_driver (Properties prop) {
 		highlight = prop.getProperty("highlight");
 		optionsManager = new OptionsManager(prop);
 		String browserName = prop.getProperty("browser").trim();
-		System.out.println("Running on Browser:" +browserName);
+		System.out.println("Running on Browser => " +browserName);
 		
 		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(optionsManager.getChromeOptions());
+			//driver = new ChromeDriver(optionsManager.getChromeOptions());
+			threadLocalDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 		}
 		else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver(optionsManager.getEdgeOptions());
+			//driver = new EdgeDriver(optionsManager.getEdgeOptions());
+			threadLocalDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
 		}
 		else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			//driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			threadLocalDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 		}	
 		else {
 			System.out.println("Browser not found");
 		}
 		
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.get(prop.getProperty("url").trim());
+		getDriver().manage().window().maximize();
+		getDriver().manage().deleteAllCookies();
+		getDriver().get(prop.getProperty("url").trim());
 		
-		return driver;
+		return getDriver();
 	}
+	
+	
+	
+	public static synchronized WebDriver getDriver() {
+		return threadLocalDriver.get();
+	}
+	
+	
 	
 	public Properties init_prop() {
 		prop = new Properties();

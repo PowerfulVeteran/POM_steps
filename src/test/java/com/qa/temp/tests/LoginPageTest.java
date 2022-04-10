@@ -24,7 +24,7 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertTrue(url.contains(Constants.URL_SEARCH_TEXT));
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, enabled = false)
 	public void loginPageForgotPwdLinkTest () {
 		Assert.assertTrue(loginpage.isForgotPasswordLinkAvailable());
 	}

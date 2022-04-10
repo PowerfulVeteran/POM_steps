@@ -1,2 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Demo Cart App Test automtion regression suite" thread-count="3" parallel="tests" verbose="3">
+
+
+	<test name="ProductInfo page Test">
+	<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.temp.tests.ProductInfoTest" />
+		</classes>
+	</test>
+
+
+	<test name="Accounts page Test">
+	<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.temp.tests.AccountsPageTest" />
+		</classes>
+	</test>
+
+
+	<test name="Login page Test">
+	<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.temp.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+
+</suite>

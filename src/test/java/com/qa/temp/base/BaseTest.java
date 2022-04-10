@@ -2,9 +2,11 @@ package com.qa.temp.base;
 
 import java.util.Properties;
 
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import com.qa.temp.factory.DriverFactory;
 import com.qa.temp.pages.AccountsPage;
@@ -22,6 +24,7 @@ public class BaseTest {
 	public Properties prop;
 	DriverFactory df;
 	
+	/*
 	@BeforeTest
 	public void setUp() {
 		df = new DriverFactory();
@@ -29,6 +32,18 @@ public class BaseTest {
 		driver = df.inti_driver(prop);
 		loginpage = new LoginPage(driver);
 	}
+	*/
+	
+	@Parameters ({"browser"})
+	@BeforeTest
+		public void setUp(String browserName) {
+		df = new DriverFactory();
+		prop = df.init_prop();
+		prop.setProperty("browser", browserName);
+		driver = df.inti_driver(prop);
+		loginpage = new LoginPage(driver);
+	}
+	
 	
 	@AfterTest
 	public void tearDown () {
