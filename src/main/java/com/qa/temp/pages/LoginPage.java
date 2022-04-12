@@ -15,7 +15,8 @@ public class LoginPage {
 	private By password = By.cssSelector("input#input-password");
 	private By loginButton = By.cssSelector("input[value='Login']");
 	private By forgotPwdLink = By.xpath("//form //a [text()='Forgotten Password']");
-	
+	private By registerLink = By.linkText("Register");
+	private By loginErrorMsg = By.cssSelector("div.alert.alert-danger.alert-dismissible");
 	
 	//Constructors:
 	public LoginPage (WebDriver driver) {
@@ -44,6 +45,11 @@ public class LoginPage {
 		elementUtil.getElement(password).sendKeys(pwd);
 		elementUtil.getElement(loginButton).click();
 		return new AccountsPage(driver);
+	}
+	
+	public RegistrationPage navigateToRegisterPage () {
+		elementUtil.doActionsClick(registerLink);
+		return new RegistrationPage(driver);
 	}
 }
 

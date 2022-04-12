@@ -14,5 +14,6 @@ public class Constants {
 					"My Orders",
 					"My Affiliate Account",
 					"Newsletter");
+	public static final String REGISTRATION_SUCCESS = "Your Account Has Been Created!";
 	
 }

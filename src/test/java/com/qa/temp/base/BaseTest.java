@@ -12,6 +12,7 @@ import com.qa.temp.factory.DriverFactory;
 import com.qa.temp.pages.AccountsPage;
 import com.qa.temp.pages.LoginPage;
 import com.qa.temp.pages.ProductInfoPage;
+import com.qa.temp.pages.RegistrationPage;
 import com.qa.temp.pages.SearchResultPage;
 
 public class BaseTest {
@@ -21,6 +22,7 @@ public class BaseTest {
 	public AccountsPage accPage;
 	public SearchResultPage searchResPg;
 	public ProductInfoPage productInfoPage;
+	public RegistrationPage registrationPage;
 	public Properties prop;
 	DriverFactory df;
 	
