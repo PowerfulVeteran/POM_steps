@@ -15,5 +15,5 @@ public class Constants {
 					"My Affiliate Account",
 					"Newsletter");
 	public static final String REGISTRATION_SUCCESS = "Your Account Has Been Created!";
-	
+	public static final String REGISTER_SHEET_NAME =  "nayu_TestData";
 }
