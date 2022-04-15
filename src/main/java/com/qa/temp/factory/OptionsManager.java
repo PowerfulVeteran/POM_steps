@@ -7,7 +7,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import com.microsoft.edge.seleniumtools.EdgeOptions;
 
 
-
 public class OptionsManager { 
 	private Properties prop;
 	private ChromeOptions co;

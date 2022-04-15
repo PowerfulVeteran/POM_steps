@@ -26,19 +26,18 @@ public class RegistrationPageTest extends BaseTest {
 						"meetpate223@onermail.com", "232325689", "Meetp@123", "yes"));
 	}
 	*/
-	@DataProvider
-	public Object[] [] getRegisterData () {
-		Object regData[] [] = ExcelUtil.getTestData(Constants.REGISTER_SHEET_NAME);
-		return regData;
-	}
-	
+		
 	public String getRandomEmail () {
 		Random randomGenerator = new Random();
 		String email = "TestDataEmailId" + randomGenerator.nextInt(10000) + "@testmail.com";
 		return email;
 	}
 	
-		
+	@DataProvider
+	public Object[] [] getRegisterData () {
+		Object regData[] [] = ExcelUtil.getTestData(Constants.REGISTER_SHEET_NAME);
+		return regData;
+	}	
 	
 	@Test (dataProvider = "getRegisterData")  //variable name's sequence same as in excel sheet 
 	public void userRegistrationTest(String firstname, String lastname, 

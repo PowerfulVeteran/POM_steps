@@ -3,9 +3,13 @@
 
 <suite name="Demo Cart App Test automtion regression suite" thread-count="3" parallel="tests" verbose="3">
 
-<!--
+	<listeners>
+		<listener class-name="com.qa.temp.listeners.ExtentReportListener" />
+	<!--	<listener class-name="com.qa.temp.listeners.TestAllureListener" />  -->
+	</listeners>
+		
 	<test name="ProductInfo page Test">
-	<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.temp.tests.ProductInfoTest" />
 		</classes>
@@ -13,7 +17,7 @@
 
 
 	<test name="Accounts page Test">
-	<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.temp.tests.AccountsPageTest" />
 		</classes>
@@ -21,14 +25,14 @@
 
 
 	<test name="Login page Test">
-	<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.temp.tests.LoginPageTest" />
 		</classes>
 	</test>
--->
+
 	<test name="Registration page Test">
-	<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="edge" />
 		<classes>
 			<class name="com.qa.temp.tests.RegistrationPageTest" />
 		</classes>
